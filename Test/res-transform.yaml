@@ -1,0 +1,27 @@
+#
+# Copyright Super iPaaS Integration LLC, an IBM Company 2024
+#
+kind: TransformResponse
+apiVersion: api.webmethods.io/beta
+metadata:
+  namespace: dev_all
+  name: response_processing_policy
+  version: alpha
+  tags:
+    - request
+spec:
+  condition: (${response.headers.name} equals svis)
+  transformations:
+    set:
+      - key: ${response.headers.h2}
+        value: test-header-value
+    setStatus: # Introduced for Response Processing
+      code: 400
+      message: Invalid request
+    remove:
+      - ${response.headers.name}
+    namespaces:
+      - prefix: ps1
+        URI: http://test.com
+      - prefix: ps2
+        URI: http://test2.com

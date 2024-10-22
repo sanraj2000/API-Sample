@@ -1,0 +1,25 @@
+#
+# Copyright Super iPaaS Integration LLC, an IBM Company 2024
+#
+kind: PolicySequence
+apiVersion: api.webmethods.io/beta
+metadata:
+  name: policyseq
+  version: 1.0
+  namespace: dev_all
+  tags:
+    - seq
+spec:
+  transport:
+    - $ref:     dev_all:transport:alpha
+  iam:
+    - $ref: dev_all:My_IAM:alpha
+  monitoring:
+    - $ref: dev_all:log_invocation:alpha
+  routing:
+    - $ref: dev_all:routing:alpha
+  req-processing:
+    - $ref:     dev_all:validate_API_Specification_policy:alpha
+    - $ref:     dev_all:request_processing_policy:alpha
+  res-processing:
+    - $ref: dev_all:response_processing_policy:alpha
