@@ -9,6 +9,7 @@ metadata:
   namespace: dev_all
   tags:
     - IAM
+    - san
 spec:
   enabled: true
   triggerPolicyViolation: true
